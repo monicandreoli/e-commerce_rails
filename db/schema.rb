@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_091159) do
+ActiveRecord::Schema.define(version: 2021_03_22_094854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.date "pick_up_date"
+    t.time "pick_up_time"
+    t.string "pick_up_shop"
+    t.integer "total_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_carts_on_product_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "description"
+    t.integer "price"
+    t.string "reference_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +46,16 @@ ActiveRecord::Schema.define(version: 2021_03_22_091159) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.string "country"
+    t.integer "post_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "users"
 end
