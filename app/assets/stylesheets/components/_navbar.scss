@@ -1,6 +1,7 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  justify-content: space-around;
   background: white;
+  padding: 1em 3em;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +9,63 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  height: 52px;
+}
+
+.nav-search {
+  max-width: 400px;
+  input {
+    border-radius: 30px;
+    height: 46px;
+  }
+}
+
+// this make the dropdown arrow not visible
+.dropdown-toggle:empty::after {
+  color: transparent;
+}
+
+.list-categories {
+  font-size: 14px;
+  list-style: none;
+  width: 100%;
+  justify-content: space-around;
+  padding-left: 0;
+  text-transform: uppercase;
+}
+.first-tab {
+  //background-color: #9fa9bc4f;
+  background-color: rgba(207, 216, 228, 0.178);
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+.second-tab {
+  background-color: rgba(207, 216, 228, 0.178);
+  //background-color: #9fa9bc2a;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width:730px) {
+  display: none;
+}
+
+.fa-user {
+  font-size: 14px;
+  margin: 5px 4px 0 0;
+}
+
+.log-in {
+  border-radius: 30px;
+  font-size: 16px;
+  display: inline;
+  margin: 0;
+}
+
+
+.log-in-link {
+  border: 1px solid red;
+  border-radius: 30px;
 }
